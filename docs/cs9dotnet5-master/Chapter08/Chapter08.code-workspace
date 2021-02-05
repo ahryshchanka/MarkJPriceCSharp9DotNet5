@@ -1,0 +1,46 @@
+{
+	"folders": [
+		{
+			"path": "WorkingWithNumbers"
+		},
+		{
+			"path": "WorkingWithText"
+		},
+		{
+			"path": "WorkingWithLists"
+		},
+		{
+			"path": "WorkingWithRegularExpressions"
+		},
+		{
+			"path": "WorkingWithDictionaries"
+		},
+		{
+			"path": "WorkingWithRanges"
+		},
+		{
+			"path": "WorkingWithNetworkResources"
+		},
+		{
+			"path": "WorkingWithReflection"
+		},
+		{
+			"path": "Internationalization"
+		},
+		{
+			"path": "Exercise02"
+		},
+		{
+			"path": "Exercise03App"
+		},
+		{
+			"path": "Exercise03"
+		},
+		{
+			"path": "WorkingWithImages"
+		},
+		{
+			"path": "Exercise03UnitTests"
+		}
+	]
+}
