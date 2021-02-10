@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.2" />
+    <PackageReference Include="System.Linq.Async" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MarkJPriceCSharp9DotNet5.Ch20.Client\MarkJPriceCSharp9DotNet5.Ch20.Client.csproj" />
+    <ProjectReference Include="..\MarkJPriceCSharp9DotNet5.Ch20.Shared\MarkJPriceCSharp9DotNet5.Ch20.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Northwind.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </None>
+  </ItemGroup>
+
+</Project>

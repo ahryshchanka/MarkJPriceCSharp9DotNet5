@@ -1,0 +1,19 @@
+@page "/create-customer"
+@using MarkJPriceCSharp9DotNet5.Ch20.Shared.Entities
+
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
+<h3>Customer Create</h3>
+
+<CustomerDetail ButtonText="Create Customer" Customer="@_customer" OnValidSubmit="@Create" />
+
+@code {
+    private readonly Customer _customer = new();
+    
+    private async Task Create()
+    {
+        await Http.PostAsJsonAsync("api/ustomers", _customer);
+        Navigation.NavigateTo("customers");
+    }
+}

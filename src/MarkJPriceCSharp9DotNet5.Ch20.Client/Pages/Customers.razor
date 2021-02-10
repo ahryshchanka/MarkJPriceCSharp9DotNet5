@@ -1,0 +1,57 @@
+@page "/customers"
+
+@using MarkJPriceCSharp9DotNet5.Ch20.Shared.Entities
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
+<h1>Customers</h1>
+
+<a class="btn btn-info" onclick="@Create" >Create</a>
+
+@if (_customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead> <tr>
+            <th>ID</th>
+            <th>Company Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var customer in _customers)
+        {
+            <tr>
+                <td>@customer.CustomerId</td>
+                <td>@customer.CompanyName</td>
+                <td>@customer.Address<br/>
+                    @customer.City<br/>
+                    @customer.PostalCode<br/>
+                    @customer.Country</td>
+                <td>@customer.Phone</td>
+                <td>
+                    <a class="btn btn-info"
+                       href="edit-customer/@customer.CustomerId">
+                        <i class="oi oi-pencil"></i></a>
+                    <a class="btn btn-danger"
+                       href="delete-customer/@customer.CustomerId">
+                        <i class="oi oi-trash"></i></a>
+                </td>
+            </tr>
+        } </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<Customer> _customers;
+
+    private void Create() => Navigation.NavigateTo("/create-customer");
+    
+    protected override async Task OnInitializedAsync()
+        => _customers = await Http.GetFromJsonAsync<Customer[]>("api/customers");
+}

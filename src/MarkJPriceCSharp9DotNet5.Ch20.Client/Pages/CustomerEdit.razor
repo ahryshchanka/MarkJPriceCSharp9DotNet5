@@ -1,0 +1,33 @@
+@page "/edit-customer/{customerId}"
+
+@using MarkJPriceCSharp9DotNet5.Ch20.Shared.Entities
+@inject NavigationManager Navigation
+@inject HttpClient Http
+
+<h3>Customer Edit</h3>
+
+<EditForm Model="@_customer" OnSubmit="ExtraValidation">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <InputText id="name" @bind-Value="_customer.CompanyName" />
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    
+    private readonly Customer _customer = new();
+
+    private void ExtraValidation()
+    {
+    }
+    
+    [Parameter]
+    public string CustomerId { get; set; }
+
+    private async Task Update()
+    {
+        await Http.PutAsJsonAsync("api/customers", _customer);
+        Navigation.NavigateTo("customers");
+    }
+
+}

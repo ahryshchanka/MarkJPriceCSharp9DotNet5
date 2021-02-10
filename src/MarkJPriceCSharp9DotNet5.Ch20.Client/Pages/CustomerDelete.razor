@@ -1,0 +1,24 @@
+@page "/delete-customer/{Customerid}"
+@using MarkJPriceCSharp9DotNet5.Ch20.Shared.Entities
+@inject HttpClient Http
+@inject NavigationManager Navigation
+
+<h3>Customer Delete</h3>
+<div class="alert alert-danger">Warning! This action cannot be undone!</div>
+
+<CustomerDetail Customer="@Customer" OnValidSubmit="Delete" ButtonText="Delete" ButtonStyle="warn"></CustomerDetail>
+
+@code {
+    
+    [Parameter]
+    public string CustomerId { get; set; }
+    
+    [Parameter]
+    public Customer Customer { get; set; }
+
+    private async Task Delete()
+    {
+        await Http.DeleteAsync($"api/customer/{CustomerId}");
+        Navigation.NavigateTo("customers");
+    }
+}
