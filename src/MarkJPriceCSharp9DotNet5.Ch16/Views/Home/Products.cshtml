@@ -1,0 +1,36 @@
+@model MarkJPriceCSharp9DotNet5.Ch16.Models.Product[]
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "_Layout";
+}
+
+<h2>@ViewBag.Title</h2>
+<table class="table">
+  <thead> <tr>
+    <th>Category Name</th>
+    <th>Supplier's Company Name</th>
+    <th>Product Name</th>
+    <th>Unit Price</th>
+    <th>Units In Stock</th>
+  </tr>
+  </thead>
+  <tbody>
+  @foreach (var item in Model)
+  {
+    <tr> <td>
+        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
+      </td> <td>
+        @Html.DisplayFor(modelItem => item.ProductName)
+      </td>
+      <td>
+        @Html.DisplayFor(modelItem => item.Cost)
+      </td> <td>
+        @Html.DisplayFor(modelItem => item.Stock)
+      </td>
+    </tr> }
+  <tbody>
+</table>
